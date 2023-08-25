@@ -8,3 +8,40 @@
 /* UTILS */
 
 /* STRUCTURE */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel {
+  width: 1200px;
+  height: 1000px;
+  border: 1px solid black;
+  position: relative;
+}
+
+#jumbo > div {
+  width: 120px;
+  background-color: whitesmoke;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-right {
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.arrow-left {
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+div > i {
+  font-size: 80px;
+}
