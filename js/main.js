@@ -32,7 +32,20 @@ const jumbo = document.getElementById("jumbo");
 const arrowRight = document.getElementById("arrow-right");
 const arrowLeft = document.getElementById("arrow-left");
 
+// variabile contatore
+let conut = 0;
+
+// variabile che salva le immagini stampate
+let pictureHTML = "";
+
 // ciclo for che crea le immagini
 for (let i = 0; i < images.length; i++) {
   const picture = images[i].image;
+
+  // operatore ternario di attivazione immagine
+  let activePicture = i == conut ? "d-block" : "d-none";
+
+  pictureHTML += `<img class="${activePicture}" src="${picture}">`;
 }
+
+jumbo.innerHTML = pictureHTML;
