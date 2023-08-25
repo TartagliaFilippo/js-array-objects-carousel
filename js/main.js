@@ -26,3 +26,13 @@ const images = [
     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
   },
 ];
+
+// collego i miei elementi del dom
+const jumbo = document.getElementById("jumbo");
+const arrowRight = document.getElementById("arrow-right");
+const arrowLeft = document.getElementById("arrow-left");
+
+// ciclo for che crea le immagini
+for (let i = 0; i < images.length; i++) {
+  const picture = images[i].image;
+}
