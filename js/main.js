@@ -77,6 +77,9 @@ const images = [
 // elemnti del dom
 const containerImmagini = document.getElementById("container-immagini");
 
+const frecciaAvanti = document.getElementById("avanti");
+const frecciaIndietro = document.getElementById("indietro");
+
 // variabile che attiva le immagini
 let immagineAttiva = 0;
 
@@ -103,4 +106,40 @@ images.forEach((immagine, indice) => {
   // appendo il nodo al container
   containerImmagini.append(immagineElemento);
 });
-console.log(images);
+
+// collego le freccie
+// DESTRA AVANTI
+frecciaAvanti.addEventListener("click", vaiAvanti);
+
+function vaiAvanti() {
+  // rimuovo la classe immagine-attiva
+  const vecchiaImmagine = images[immagineAttiva].nodoHTML;
+  vecchiaImmagine.classList.remove("immagine-attiva");
+
+  // incremento l'indice
+  immagineAttiva++;
+
+  if (immagineAttiva >= images.length) immagineAttiva = 0;
+
+  // riassegno la classe attiva
+  const nuovaImmagine = images[immagineAttiva].nodoHTML;
+  nuovaImmagine.classList.add("immagine-attiva");
+}
+
+// SINISTRA INDIETRO
+frecciaIndietro.addEventListener("click", vaiIndietro);
+
+function vaiIndietro() {
+  // rimuovo la classe immagine-attiva
+  const vecchiaImmagine = images[immagineAttiva].nodoHTML;
+  vecchiaImmagine.classList.remove("immagine-attiva");
+
+  // decremento l'indice
+  immagineAttiva--;
+
+  if (immagineAttiva < 0) immagineAttiva = images.length - 1;
+
+  // riassegno la classe attiva
+  const nuovaImmagine = images[immagineAttiva].nodoHTML;
+  nuovaImmagine.classList.add("immagine-attiva");
+}
