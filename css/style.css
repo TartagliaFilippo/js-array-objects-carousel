@@ -11,7 +11,10 @@ img {
   height: 100%;
 }
 
-/* STRUCTURE */
+/* .wrapper {
+  position: relative;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -22,11 +25,11 @@ img {
   width: 1200px;
   height: 1000px;
   border: 1px solid black;
-  position: relative;
   border-radius: 20px;
 }
 
-#jumbo > div {
+.arrow-left,
+.arrow-right {
   width: 120px;
   background-color: rgba(5, 5, 5, 0.2);
   position: absolute;
@@ -36,19 +39,88 @@ img {
 }
 
 .arrow-right {
-  right: 0;
-  top: 0;
+  right: 420px;
   bottom: 0;
+  height: 1000px;
+
   border-radius: 0 20px 20px 0;
 }
 
 .arrow-left {
-  left: 0;
-  top: 0;
+  left: 420px;
   bottom: 0;
+  height: 1000px;
+
   border-radius: 20px 0 0 20px;
 }
 
 div > i {
   font-size: 80px;
+} */
+
+/* STRUCTURE */
+.wrapper {
+  height: 100vh;
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-carosello {
+  width: 80%;
+  height: 60%;
+  position: relative;
+
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 7px 1px #333;
+}
+
+.container-immagini {
+  height: 100%;
+}
+
+.container-immagini > .immagine {
+  width: 100%;
+  height: 100%;
+
+  display: none;
+  position: relative;
+}
+
+.container-immagini > .immagine-attiva {
+  display: block;
+}
+
+.container-immagini > .immagine > img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.controlli {
+  position: absolute;
+  top: 0;
+
+  height: 100%;
+  width: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.controlli.freccia-sx {
+  left: 0;
+}
+
+.controlli.freccia-dx {
+  right: 0;
 }

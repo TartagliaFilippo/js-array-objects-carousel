@@ -27,25 +27,49 @@ const images = [
   },
 ];
 
-// collego i miei elementi del dom
-const jumbo = document.getElementById("jumbo");
-const arrowRight = document.getElementById("arrow-right");
-const arrowLeft = document.getElementById("arrow-left");
+// // collego i miei elementi del dom
+// const jumbo = document.getElementById("jumbo");
+// const arrowRight = document.getElementById("arrow-right");
+// const arrowLeft = document.getElementById("arrow-left");
 
-// variabile contatore
-let conut = 0;
+// // variabile contatore
+// let counter = 1;
 
-// variabile che salva le immagini stampate
-let pictureHTML = "";
+// // variabile che salva le immagini stampate
+// let pictureHTML = "";
 
-// ciclo for che crea le immagini
-for (let i = 0; i < images.length; i++) {
-  const picture = images[i].image;
+// // array di immagini
+// const pictureArray = [];
 
-  // operatore ternario di attivazione immagine
-  let activePicture = i == conut ? "d-block" : "d-none";
+// // ciclo for che crea le immagini
+// for (let i = 0; i < images.length; i++) {
+//   const picture = images[i].image;
 
-  pictureHTML += `<img class="${activePicture}" src="${picture}">`;
-}
+//   // riempio il mio array di immagini
+//   pictureArray.push(picture);
 
-jumbo.innerHTML = pictureHTML;
+//   // operatore ternario di attivazione immagine
+//   let activePicture = i == counter ? "d-block" : "d-none";
+
+//   pictureHTML += `<img class="${activePicture}" src="./${pictureArray[i]}">`;
+// }
+
+// jumbo.innerHTML = pictureHTML;
+
+// // pulsnate next
+// arrowRight.addEventListener("click", function () {
+//   // variabile d-block
+//   const allPicture = document.querySelectorAll(".carousel");
+
+//   // recupero le slide con display block e la rimuovo
+//   const blockPicture = pictureArray[counter];
+//   blockPicture.classList.add("d-none");
+
+//   // incremento la variabile counter
+//   counter++;
+
+//   // ciclo infinito alle slide
+//   if (counter >= pictureArray.length) {
+//     counter = 0;
+//   }
+// });
