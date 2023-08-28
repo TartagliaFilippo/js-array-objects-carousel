@@ -102,6 +102,17 @@ div > i {
   object-fit: cover;
 }
 
+.container-immagini > .immagine > .presentazione {
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  bottom: 0;
+  padding: 1rem;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
 .controlli {
   position: absolute;
   top: 0;
