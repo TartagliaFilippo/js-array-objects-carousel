@@ -76,6 +76,7 @@ const images = [
 
 // elemnti del dom
 const containerImmagini = document.getElementById("container-immagini");
+const containerMiniature = document.getElementById("container-miniature");
 
 const frecciaAvanti = document.getElementById("avanti");
 const frecciaIndietro = document.getElementById("indietro");
@@ -103,43 +104,75 @@ images.forEach((immagine, indice) => {
   // aggiungo all'array il nodoHTML
   immagine.nodoHTML = immagineElemento;
 
-  // appendo il nodo al container
+  // creazione delle miniature
+  const miniaturaElemento = document.createElement("div");
+  miniaturaElemento.classList.add("miniatura");
+  miniaturaElemento.innerHTML = `<img src="./${immagine.image}" class="" alt="" /> `;
+  miniaturaElemento.setAttribute("data-index", indice);
+
+  if (indice == immagineAttiva)
+    miniaturaElemento.classList.add("immagine-attiva");
+
+  // gestisco il click
+  miniaturaElemento.addEventListener("click", function () {
+    // recupero l'incice cliccato
+    const indice = this.getAttribute("data-index");
+
+    // attivo l'immagine
+    vaiImmagine(indice);
+  });
+
+  // della miniatura
+  miniaturaElemento.addEventListener("click", function () {
+    indice = this.getAttribute("data-index");
+  });
+
+  // aggiungola miniatura al nodo html
+  immagine.nodoMiniatura = miniaturaElemento;
+
+  // appendo immagini e miniature
   containerImmagini.append(immagineElemento);
+  containerMiniature.append(miniaturaElemento);
 });
 
 // collego le freccie
 // DESTRA AVANTI
-frecciaAvanti.addEventListener("click", vaiAvanti);
 
 function vaiAvanti() {
-  // rimuovo la classe immagine-attiva
+  // controllo del dell'immagine su l'array
+  let prossimoIndice = immagineAttiva + 1;
+  if (prossimoIndice >= images.length) prossimoIndice = 0;
+
+  //prossima immagine
+  vaiImmagine(prossimoIndice);
+}
+function vaiIndietro() {
+  // controllo dell'immagine che sia nell'array
+  let indicePrecedente = immagineAttiva - 1;
+  if (indicePrecedente < 0) indicePrecedente = images.length - 1;
+
+  // immagine precendente
+  vaiImmagine(indicePrecedente);
+}
+function vaiImmagine(indice) {
+  // tolgo le classi da immagini e miniature
   const vecchiaImmagine = images[immagineAttiva].nodoHTML;
   vecchiaImmagine.classList.remove("immagine-attiva");
+  const vecchiaMiniatura = images[immagineAttiva].nodoMiniatura;
+  vecchiaMiniatura.classList.remove("immagine-attiva");
 
-  // incremento l'indice
-  immagineAttiva++;
+  // setto la slide attiva
+  immagineAttiva = indice;
 
-  if (immagineAttiva >= images.length) immagineAttiva = 0;
-
-  // riassegno la classe attiva
+  // classe attiva a immagine e miniatura
   const nuovaImmagine = images[immagineAttiva].nodoHTML;
   nuovaImmagine.classList.add("immagine-attiva");
+  const nuovaMiniatura = images[immagineAttiva].nodoMiniatura;
+  nuovaMiniatura.classList.add("immagine-attiva");
 }
+
+// DESTRA AVANTI
+frecciaAvanti.addEventListener("click", vaiAvanti);
 
 // SINISTRA INDIETRO
 frecciaIndietro.addEventListener("click", vaiIndietro);
-
-function vaiIndietro() {
-  // rimuovo la classe immagine-attiva
-  const vecchiaImmagine = images[immagineAttiva].nodoHTML;
-  vecchiaImmagine.classList.remove("immagine-attiva");
-
-  // decremento l'indice
-  immagineAttiva--;
-
-  if (immagineAttiva < 0) immagineAttiva = images.length - 1;
-
-  // riassegno la classe attiva
-  const nuovaImmagine = images[immagineAttiva].nodoHTML;
-  nuovaImmagine.classList.add("immagine-attiva");
-}
